@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      display: flex;
+      margin: 0;
+      height: 100vh;
+      font-family: 'Open sans';
+    }
+
+    nav {
+      align-self: flex-start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #2b3c2f;
+      height: 100%;
+    }
+
+    nav img {
+      height: 88px;
+      width: 152px;
+      padding: 24px;
+      object-fit: cover;
+    }
+
+    nav ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      list-style: none;
+      padding: 0;
+      width: 100%;
+    }
+
+    nav ul li {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0 4px;
+    }
+
+    nav li a {
+      padding: 12px 24px;
+      text-decoration: none;
+      color: #000;
+      border-radius: 8px;
+      color: #FFF;
+    }
+
+    nav li a:hover {
+      background-color: #311f052d;
+    }
+
+    nav li a.active {
+      font-weight: bold;
+      position: relative;
+      background-color: #cb7242;
+    }
+    nav li a.active::before{
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 80%;
+      border-radius: 12px;
+      background-color: #FFF;
+    }
+    nav .btn-sair{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      text-decoration: none;
+      border: 1px solid #FFF;
+      border-radius: 4px;
+      padding: 12px 0px;
+      width: 90%;
+      margin: 12px;
+    }
+
+    .dashboard {
+      flex: 1;
+      display: flex;
+      background-size: cover;
+      background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=1961&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      padding: 24px;
+      gap: 12px;
+      flex-direction: column;
+      backdrop-filter: blur(2px);
+    }
+
+    .container .row {
+      display: flex;
+      gap: 12px;
+      flex-direction: row;
+    }
+
+    .card {
+      width: 100%;
+      background-color: #FFF;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .card.number{
+      width: 25%;
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+  </style>
+  <title>Dashboard</title>
+</head>
+
+<body>
+  <nav>
+    <div class="links">
+      <img
+        src="https://www.cuponation.com.br/images/fit-in/256x/images/c/cafeorfeu-logo.2.png"
+        alt="orfeu café">
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Plantações</a></li>
+        <li><a href="#">Vendas</a></li>
+        <li><a href="#">Clientes</a></li>
+        <li><a href="#">Avaliações</a></li>
+      </ul>
+    </div>
+    <a href="#" class="btn-sair">Sair</a>
+  </nav>
+  <div class="dashboard">
+    <div class="container">
+      <div class="row">
+        <div class="card number">
+          <h3>Produtos com mais saída:</h3>
+          <p>Café Jupy</p>
+        </div>
+        <div class="card number">
+          <h3>Estoque Total (sacas)</h3>
+          <p>325</p>
+        </div>
+        <div class="card number">
+          <h3>Unidades</h3>
+          <p>24</p>
+        </div>
+        <div class="card number">
+          <h3>Clientes Cadastrados</h3>
+          <p>52
+            <span>+4 hoje :)</span>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card">
+          <h3>Temperatura Armazem</h3>
+          <canvas id="graficoLinha"></canvas>
+        </div>
+        <div class="card">
+          <h3>Ranking de vendas</h3>
+          <canvas id="graficoBarra"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  new Chart(document.getElementById('graficoBarra'), {
+    type: 'bar',
+    data: {
+      labels: ['1* Bourbon Amarelo', '2* Café em Grãos Arara', '3* Café em Grãos Jupy', '4*Café em Grãos Acauã', '5* Café em Grãos Clássico', '6* Café em Grãos Intenso'],
+      datasets: [{
+        label: 'Número de vendas',
+        data: [25, 19, 17, 15, 12, 5],
+        borderWidth: 1,
+        backgroundColor: 'rgb(203, 114, 66)',
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      plugins: {
+        legend: {
+          position: 'bottom',
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: false,
+          ticks: {
+            color: '#000',
+            font: {
+              size: 14,
+              family: 'Open sans',
+              weight: 'bold'
+            }
+          }
+        }
+      }
+    }
+  });
+
+  
+
+  new Chart(document.getElementById('graficoLinha'), {
+    type: 'line',
+    data: {
+      labels: ['11/04/2025 12:00', '11/04/2025 12:05', '11/04/2025 12:10', '11/04/2025 12:15', '11/04/2025 12:20', '11/04/2025 12:25', '11/04/2025 12:30'],
+      datasets: [{
+    label: 'Temp. Estoque (C°)',
+    data: [12.5, 14, 10, 8, 9, 9, 4],
+    borderWidth: 2,
+    fill: false,
+    pointStyle: 'circle',
+    borderColor: '#3F2305',
+  }, {
+    label: 'Temp. Máxima',
+    data: [15, 15, 15, 15, 15, 15, 15],
+    fill: false,
+    borderDash: [4, 2],
+    borderWidth: 1,
+    pointStyle: false,
+    borderColor: 'rgb(255, 0, 0)',
+  }, {
+    label: 'Temp. Miníma',
+    data: [5, 5, 5, 5, 5, 5, 5],
+    borderColor: 'rgb(255, 0, 0)',
+    borderDash: [4, 2],
+    borderWidth: 1,
+    pointStyle: false,
+    fill: false,
+  }]
+    },
+    
+    options: {
+      plugins: {
+        legend: {
+          position: 'bottom',
+        },
+      },
+      scales: {
+        y: {
+          min:0,
+          max: 20,
+          ticks: {
+            color: '#000',
+            font: {
+              size: 14,
+              family: 'Open sans',
+              weight: 'bold'
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+
+</html>
