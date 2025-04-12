@@ -1,0 +1,153 @@
+body {
+    display: flex;
+    margin: 0;
+    height: 100vh;
+    font-family: 'Open sans';
+  }
+
+  nav {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2b3c2f;
+    height: 100%;
+  }
+
+  nav img {
+    height: 88px;
+    width: 152px;
+    padding: 24px;
+    object-fit: cover;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+
+  nav ul li {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 4px;
+  }
+
+  nav li a {
+    padding: 12px 24px;
+    text-decoration: none;
+    color: #000;
+    border-radius: 8px;
+    color: #FFF;
+  }
+
+  nav li a:hover {
+    background-color: #311f052d;
+  }
+
+  nav li a.active {
+    font-weight: bold;
+    position: relative;
+    background-color: #cb7242;
+  }
+  nav li a.active::before{
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 80%;
+    border-radius: 12px;
+    background-color: #FFF;
+  }
+  nav .btn-sair{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    text-decoration: none;
+    border: 1px solid #FFF;
+    border-radius: 4px;
+    padding: 12px 0px;
+    width: 90%;
+    margin: 12px;
+  }
+
+  .dashboard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=1961&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  }
+  .top-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(6px);
+    color: #FFF;
+    padding: 12px 24px;
+  }
+  .top-bar-right{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .top-bar-right .btn{
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background-color: #cb7242;
+    color: #FFF;
+  }
+  .top-bar .perfil-icone{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+  .container {
+    flex: 1;
+    display: flex;
+    padding: 24px;
+    gap: 12px;
+    flex-direction: column;
+    backdrop-filter: blur(2px);
+  }
+
+  .container .row {
+    display: flex;
+    gap: 12px;
+    flex-direction: row;
+  }
+
+  .card {
+    width: 100%;
+    background-color: #FFF;
+    padding: 12px;
+    border-radius: 8px;
+  }
+  .card h3 {
+    margin-top: 0;
+  }
+  .card.number{
+    width: 25%;
+  }
+  .card.number p{
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    text-align: end;
+  }
+  .card.number p span{
+    font-size: 0.75em;
+    background-color: #2b3c2f;
+    color: #FFF;
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
